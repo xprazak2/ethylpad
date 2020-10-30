@@ -7,6 +7,8 @@ defmodule EthylpadWeb.Router do
 
   scope "/api", EthylpadWeb do
     pipe_through :api
+
+    resources "/pads", PadController
   end
 
   # Enables LiveDashboard only for development
