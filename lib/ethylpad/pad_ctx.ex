@@ -101,4 +101,11 @@ defmodule Ethylpad.PadCtx do
   def change_pad(%Pad{} = pad, attrs \\ %{}) do
     Pad.changeset(pad, attrs)
   end
+
+  def find_or_create_pad(name) do
+    case Repo.get_by(Pad, name: name) do
+      nil -> create_pad(%{name: name})
+      pad -> {:ok, pad}
+     end
+  end
 end

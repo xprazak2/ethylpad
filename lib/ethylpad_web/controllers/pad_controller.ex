@@ -28,6 +28,10 @@ defmodule EthylpadWeb.PadController do
     process_response conn, PadCtx.update_pad(pad, pad_params)
   end
 
+  def find_or_create(conn, %{"name" => name}) do
+    process_response conn, PadCtx.find_or_create_pad(name)
+  end
+
   defp process_response(conn, action_result) do
     case action_result do
       {:ok, pad} -> render conn, "show.json", pad: pad

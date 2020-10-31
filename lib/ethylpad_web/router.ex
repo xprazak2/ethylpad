@@ -3,12 +3,15 @@ defmodule EthylpadWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    # quick and dirty origins, read this from env in production!
+    plug Corsica, origins: "*"
   end
 
   scope "/api", EthylpadWeb do
     pipe_through :api
 
-    resources "/pads", PadController
+    resources "/pads", PadController, except: [:show]
+    get "/pads/:name", PadController, :find_or_create
   end
 
   # Enables LiveDashboard only for development
