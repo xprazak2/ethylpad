@@ -3,6 +3,7 @@ defmodule EthylpadWeb.UserSocket do
 
   ## Channels
   # channel "room:*", EthylpadWeb.RoomChannel
+  channel "pad:*", EthylpadWeb.PadChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
